@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>com.github.jsdevel.maven</groupId>
+   <artifactId>jsdevel-org.json</artifactId>
+   <version>5.17.2013</version>
+   <packaging>jar</packaging>
+
+   <name>A packaged version of org.json</name>
+   <url>http://maven.apache.org</url>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <internal.repo.path>file://${basedir}/../maven-repos</internal.repo.path>
+   </properties>
+
+   <profiles>
+      <profile>
+         <repositories>
+            <repository>
+               <id>internal.repo</id>
+               <name>Internal Repository</name>
+               <releases>
+                  <enabled>true</enabled>
+                  <updatePolicy>daily</updatePolicy>
+                  <checksumPolicy>fail</checksumPolicy>
+               </releases>
+               <snapshots>
+                  <enabled>false</enabled>
+                  <updatePolicy>never</updatePolicy>
+                  <checksumPolicy>fail</checksumPolicy>
+               </snapshots>
+               <url>${internal.repo.path}</url>
+               <layout>default</layout>
+            </repository>
+         </repositories>
+      </profile>
+   </profiles>
+
+   <dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>4.10</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+
+   <distributionManagement>
+      <repository>
+         <id>internal.repo</id>
+         <name>Internal Repository</name>
+         <url>${internal.repo.path}</url>
+      </repository>
+   </distributionManagement>
+</project>
